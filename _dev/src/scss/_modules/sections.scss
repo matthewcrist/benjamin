@@ -1,0 +1,14 @@
+#primary{
+    position: relative;
+}
+
+.usa-section {
+    &--smallVerticalSpacing {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    &--withBreadcrumb {
+        padding-top: 0;
+    }
+}

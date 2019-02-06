@@ -1,0 +1,32 @@
+/* Table fix */
+.sortable-row table th,
+.sortable-row table td,
+.usa-width-one-third table th,
+.usa-width-one-third table td {
+    padding: .5rem;
+}
+
+.usa-width-one-fourth table th,
+.usa-width-one-fourth table td {
+    padding: .25rem;
+}
+
+.widget table {
+    margin-top: 0;
+}
+
+.wp-block-table {
+    border-bottom: 2px solid #f8f8f8; 
+    
+    td {
+        border: none;
+    }
+
+    tr:first-child td {
+        background-color: #F8F8F8 !important;
+    }
+
+    tr:nth-child(odd) td {
+        background-color: #F3F7FF;
+    }
+}

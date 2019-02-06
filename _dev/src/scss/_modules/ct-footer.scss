@@ -1,0 +1,13 @@
+.footer {
+    background: #054266;
+    padding: 1em 0 2em;
+    color: #fff;
+    font-size: .8em;
+    position: relative;
+    z-index: 9;
+
+    &-wrap {
+        display: flex;
+        align-items: center;
+    }
+}

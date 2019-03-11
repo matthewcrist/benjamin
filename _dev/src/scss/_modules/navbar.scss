@@ -53,7 +53,7 @@
 }
 
 
-.usa-accordion-button.usa-nav-link.child-active > span{
+.usa-accordion-button.usa-nav-link.child-active > span {
     border-bottom: 0.7rem solid $color-primary;
     padding-bottom: 1rem;
 }
@@ -76,4 +76,8 @@
     .admin-bar .usa-nav {
         top: 32px;
     }
+}
+
+.usa-nav-link {
+    color: #50316F;
 }

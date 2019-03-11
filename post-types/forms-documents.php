@@ -94,7 +94,8 @@ register_taxonomy("pdf-categories",
 		"hierarchical" 		=> false, 
 		"label" 			=> "Categories", 
 		"singular_label" 	=> "Category", 
-		"rewrite" 			=> true
+		"rewrite" 			=> true,
+		"show_in_rest"      => true,
 	)
 );
 

@@ -55,9 +55,9 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 
 		$nav_menu_args = array(
             'container' => '',
-            'menu_class'     => $class,
-            'walker' => $walker,
-			'menu'        => $nav_menu
+            'menu_class'    => $class,
+            'walker' 		=> $walker,
+			'menu'      	=> $nav_menu
 		);
 
 		/**

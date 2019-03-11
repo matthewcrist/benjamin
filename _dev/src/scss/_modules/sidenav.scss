@@ -11,6 +11,7 @@
         color: $color-primary-alt;
         padding-top: 1.6rem;
         padding-bottom: 1.6rem;
+        padding-left: 1.4rem;
 
         &:hover {
             color: $color-primary-alt-dark;
@@ -18,9 +19,14 @@
 
         &.usa-current {
             border-left: none;
-            padding-left: 1.6rem;
             color: $color-primary-alt;
         }
+    }
+}
+
+.usa-sidenav-sub_list {
+    a {
+        padding-lefT: 2.8rem;
     }
 }
 

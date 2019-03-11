@@ -39,5 +39,15 @@ if(!defined('BENJAMIN_POST_FORMATS')) {
     ));
 }
 
+require_once get_template_directory() . '/post-types/news-updates.php';
 require_once get_template_directory() . '/post-types/forms-documents.php';
 require_once get_template_directory() . '/inc/_inc.php';
+
+// We don't need posts currently
+function remove_menus() {
+	remove_menu_page( 'edit.php' );                   //Posts
+}
+add_action( 'admin_menu', 'remove_menus' );
+
+// Don't need to have primary taxonomy in Yoast
+add_filter( 'wpseo_primary_term_taxonomies', '__return_empty_array' );

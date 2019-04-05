@@ -51,3 +51,30 @@ add_action( 'admin_menu', 'remove_menus' );
 
 // Don't need to have primary taxonomy in Yoast
 add_filter( 'wpseo_primary_term_taxonomies', '__return_empty_array' );
+
+function homepage_content_init() {
+	register_sidebar( array(
+		'name'          => 'Home Main',
+		'id'            => 'home_main',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 style="margin-top: 0">',
+		'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'homepage_content_init' );
+
+function homepage_sidebar_init() {
+	register_sidebar( array(
+        'name'          => 'Home Sidebar',
+        'id'            => 'home_sidebar',
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ) );
+}
+
+add_action( 'widgets_init', 'homepage_sidebar_init' );
+
+?>

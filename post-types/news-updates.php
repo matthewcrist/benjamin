@@ -51,7 +51,6 @@ function news_init() {
 		'has_archive'           => true,
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
 		'show_in_rest'          => true,
 		'rest_base'             => 'news',
 	);
@@ -84,3 +83,15 @@ function remove_meta_boxes_news() {
 	remove_meta_box('wpseo_meta', 'news', 'normal');
 }
 add_action('add_meta_boxes', 'remove_meta_boxes_news', 100);
+
+// Remove Gutenberg for news
+function news_disable_gutenberg($status, $post_type) {
+	if ($post_type === 'news') {
+		return false;
+	}
+
+	return $status;
+}
+
+add_filter( 'gutenberg_can_edit_post_type', 'news_disable_gutenberg', 10, 2 );
+add_filter( 'use_block_editor_for_post_type', 'news_disable_gutenberg', 10, 2 );

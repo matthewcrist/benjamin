@@ -254,5 +254,23 @@ function forms_category_column( $column, $post_id ) {
 		}
 		echo join( ', ', $out );
 	}
-  }
+}
+  
+// Single posts should never be shown
+add_action( 'template_redirect', 'forms_documents_redirect_post' );
+
+function forms_documents_redirect_post() {
+  $queried_post_type = get_query_var('post_type');
+  if ( is_single() && 'forms-documents' ==  $queried_post_type ) {
+	$id = get_the_ID();
+    $meta = get_post_meta($id);
+		
+	if (array_key_exists('pdf_file', $meta)) {
+		$link = wp_get_attachment_url($meta['pdf_file'][0]);
+	} else {
+		$link = $meta['pdf_url'][0];
+	}
+
+	wp_redirect( $link );
+	exit;
 }

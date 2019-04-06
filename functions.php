@@ -68,7 +68,7 @@ function homepage_sidebar_init() {
 	register_sidebar( array(
         'name'          => 'Home Sidebar',
         'id'            => 'home_sidebar',
-        'before_widget' => '<div>',
+        'before_widget' => '<div class="oec-widgets">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3>',
         'after_title'   => '</h3>',

@@ -36,7 +36,8 @@
 
 
 // the title
-.hero__title {
+.hero__title {  
+    margin-bottom: 0 !important;
 
     .dashicons {
         font-size: inherit;
@@ -101,11 +102,13 @@
     }
 }
 
-
+.usa-hero-callout {
+    background-color: $color-primary-alt;
+}
 
 // the image BG overlay
 .usa-hero::before {
-    background-color: $black-overlay;
+    background-color: $white-overlay;
     content: '';
     display: block;
     position: absolute;

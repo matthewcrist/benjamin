@@ -235,6 +235,27 @@ function remove_meta_boxes_pdfs() {
 }
 add_action('add_meta_boxes', 'remove_meta_boxes_pdfs', 100);
 
+add_filter( 'manage_forms-documents_posts_columns', 'forms_posts_columns' );
+function forms_posts_columns( $columns ) {
+  $columns['pdf-categories'] = __( 'Category' );
+  return $columns;
+}
+
+add_action( 'manage_forms-documents_posts_custom_column', 'forms_category_column', 10, 2);
+function forms_category_column( $column, $post_id ) {
+  // Image column
+  if ( 'pdf-categories' === $column ) {
+	$terms = wp_get_post_terms( $post_id, 'pdf-categories' );
+	
+	if ($terms) {
+		$out = array();
+		foreach ($terms as $term) {
+			$out[] = $term->name;
+		}
+		echo join( ', ', $out );
+	}
+}
+  
 // Single posts should never be shown
 add_action( 'template_redirect', 'forms_documents_redirect_post' );
 
@@ -252,5 +273,4 @@ function forms_documents_redirect_post() {
 
 	wp_redirect( $link );
 	exit;
-  }
 }

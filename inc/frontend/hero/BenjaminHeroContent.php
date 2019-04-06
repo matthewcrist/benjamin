@@ -575,11 +575,13 @@ class BenjaminHeroContent
 
         $output = '';
 
-        $output .= '<div class="usa-hero-callout usa-section-dark">';
+        $output .= '<div class="usa-hero-callout">';
             $output .= '<h1 class="hero__title">' . $title . '</h1>';
 
+                /* 
                 if ( $description || is_customize_preview() )
                     $output .= '<p class="hero__sub-title">' . $description . '</p>';
+                */
 
                 if( !is_null( $id ) && $id != 0 )
                     $output .= '<a class="usa-button usa-button-big usa-button-secondary"

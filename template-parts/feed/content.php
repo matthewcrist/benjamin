@@ -65,13 +65,4 @@
             ?>
         </div><!-- .entry-content -->
     </div>
-
-    <footer class="entry-footer">
-        <?php
-            wp_link_pages( array(
-                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'benjamin' ),
-                'after'  => '</div>',
-            ) );
-        ?>
-    </footer><!-- .entry-footer -->
 </article><!-- #post-## -->

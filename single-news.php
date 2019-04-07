@@ -33,12 +33,11 @@ if (! $hide_content) :
     ?>
 </section>
 <section id="primary" class="usa-grid usa-section usa-section--withBreadcrumb">
-    <?php
-    if ($sidebar_position == 'left') :
-        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
-    endif;
-    ?>
     <div class="main-content <?php echo esc_attr($main_width); ?>">
+        <header class="entry-header">
+            <h1><?php the_title(); ?></h1>
+            <div class="entry-updated">Published on <?php the_date() ?></div>
+        </header>
         <?php
         while (have_posts()) :
             the_post();
@@ -48,12 +47,6 @@ if (! $hide_content) :
         endwhile; // End of the loop.
         ?>
     </div>
-    <?php
-    if ($sidebar_position === 'right') :
-        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
-    endif;
-    ?>
-
 </section>
 
 <?php

@@ -1,31 +1,31 @@
 .sidebar {
     min-height: 1px;
+}
 
-    .oec-widgets {
-        h3 {
-            color: #50316F;
-            font-size: 2.6rem;
-            font-weight: 300;
-            padding-top: 5px;
-        }
-    
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-    
-        li {
-            color: $color-gray-medium;
-        }
-    
-        a {
-            color: $color-gray-dark;
-            display: block;
-            font-weight: bold;
-            line-height: 1.4;
-            padding-right: 10%;
-            text-decoration: none;
-        }
+.oec-widgets {
+    h3 {
+        color: #50316F;
+        font-size: 2.6rem;
+        font-weight: 300;
+        padding-top: 5px;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        color: $color-gray-medium;
+    }
+
+    a {
+        color: $color-gray-dark;
+        display: block;
+        font-weight: bold;
+        line-height: 1.4;
+        padding-right: 10%;
+        text-decoration: none;
     }
 }

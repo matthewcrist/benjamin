@@ -1,376 +1,123 @@
-var autoprefixer = require('autoprefixer');
-var browserify = require('browserify');
-var cssnano = require('gulp-cssnano');
-var concat = require('gulp-concat');
-var del = require('del');
-var fs = require('fs');
-var gulp = require('gulp');
-var gulpif = require('gulp-if');
-var util = require('gulp-util');
-var imagemin = require('gulp-imagemin');
-var notify = require('gulp-notify');
-var minify = require('gulp-minify');
-var plumber = require('gulp-plumber');
-var postcss = require('gulp-postcss');
-var pngquant = require('imagemin-pngquant');
-var rename = require('gulp-rename');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var transform = require('vinyl-transform');
-var watch = require('gulp-watch');
-var wpPot = require('gulp-wp-pot');
+/*
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+========================================
+========================================
+========================================
+----------------------------------------
+USWDS SASS GULPFILE
+----------------------------------------
+*/
 
+var autoprefixer  = require('autoprefixer');
+var autoprefixerOptions = require('./node_modules/uswds-gulp/config/browsers');
+var cssnano       = require('cssnano');
+var gulp          = require('gulp');
+var mqpacker      = require('css-mqpacker');
+var path          = require('path');
+var pkg           = require('./node_modules/uswds/package.json');
+var postcss       = require('gulp-postcss');
+var rename        = require('gulp-rename');
+var replace       = require('gulp-replace');
+var sass          = require('gulp-sass');
+var sourcemaps    = require('gulp-sourcemaps');
+var uswds         = require('./node_modules/uswds-gulp/config/uswds');
 
-function swallowError(error){
-  this.emit('end');
-}
+/*
+----------------------------------------
+PATHS
+----------------------------------------
+- All paths are relative to the
+  project root
+- Don't use a trailing `/` for path
+  names
+----------------------------------------
+*/
 
-var config = {
-  production: true
-};
+// Project Sass source directory
+const PROJECT_SASS_SRC = './src/scss/styles';
 
-// dir paths
-var paths = {
-  srcPath: './src',
-  adminSrcPath: './admin-src',
+// Images destination
+const IMG_DEST = '../assets/frontend/img';
 
-  assetsPath: '../assets/frontend',
-  adminAssetsPath: '../assets/admin',
-  
-  npmPath : './node_modules',
-  bowerPath: './bower_components',
-  vendorPath: './js/vendor'
-};
-paths.scssGlob = paths.srcPath + '/scss/**/*.scss';
-paths.jsGlob = paths.srcPath + '/js/**/*.js';
+// Fonts destination
+const FONTS_DEST = '../assets/frontend/fonts';
 
-paths.adminScssGlob = paths.adminSrcPath + '/scss/**/*.scss';
-paths.adminJSGlob = paths.adminSrcPath + '/js/**/*.js';
-paths.adminImgGlob = paths.adminSrcPath + '/img/**/*';
+// Javascript destination
+const JS_DEST = '../assets/frontend/js';
 
+// Compiled CSS destination
+const CSS_DEST = '../assets/frontend/css';
 
+/*
+----------------------------------------
+TASKS
+----------------------------------------
+*/
 
-// ---------------------------------------------------------------------------
-//  The frontend assets
-// ---------------------------------------------------------------------------
-
-gulp.task('front-js',['clean:front-js'], function(){
-
-  var browserified = transform(function(filename) {
-    var b = browserify(filename);
-    return b.bundle();
-  });
-
-  return gulp.src([
-    paths.srcPath + '/js/audio.js',
-    paths.srcPath + '/js/uswds.js',
-    paths.srcPath + '/js/_benjamin-previewer.js',
-  ] )
-  .pipe(plumber({ errorHandler: handleErrors }))
-  .pipe(browserified)
-  .pipe(minify())
-  .pipe(gulp.dest( paths.assetsPath + '/js' ));
-  // .pipe(notify({message: 'JS complete'}));
-
+gulp.task('copy-uswds-setup', () => {
+  return gulp.src(`${uswds}/scss/theme/**/**`)
+  .pipe(gulp.dest(`${PROJECT_SASS_SRC}`));
 });
 
-
-gulp.task('clean:front-js', function() {
-  return del(
-    [ paths.assetsPath + '/js' ],
-    {read:false, force: true});
+gulp.task('copy-uswds-fonts', () => {
+  return gulp.src(`${uswds}/fonts/**/**`)
+  .pipe(gulp.dest(`${FONTS_DEST}`));
 });
 
+gulp.task('copy-uswds-images', () => {
+  return gulp.src(`${uswds}/img/**/**`)
+  .pipe(gulp.dest(`${IMG_DEST}`));
+});
 
-// CSS
-/**
- * Minify and optimize style.css.
- */
-gulp.task('front-css', ['front-scss'], function() {
+gulp.task('copy-uswds-js', () => {
+  return gulp.src(`${uswds}/js/**/**`)
+  .pipe(gulp.dest(`${JS_DEST}`));
+});
 
-  // removing the red theme for now
-  // paths.assetsPath + '/css/benjamin-red.css'
+gulp.task('build-sass', function(done) {
+  var plugins = [
+    // Autoprefix
+    autoprefixer(autoprefixerOptions),
+    // Pack media queries
+    mqpacker({ sort: true }),
+    // Minify
+    cssnano(({ autoprefixer: { browsers: autoprefixerOptions }}))
+  ];
   return gulp.src([
-      paths.assetsPath + '/css/benjamin.css'
+      `${PROJECT_SASS_SRC}/*.scss`
     ])
-    .pipe(plumber({ errorHandler: handleErrors }))
-    .pipe(cssnano({ safe: true }))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest( paths.assetsPath + '/css'));
-    // .pipe(notify({message: 'CSS complete'}));
-});
-
-/**
- * Compile Sass and run stylesheet through PostCSS.
- */
-gulp.task('front-scss', ['clean:front-css'], function() {
-
-  // removing the red theme for now
-  // paths.srcPath+'/scss/benjamin-red.scss'
-  return gulp.src([
-      paths.srcPath+'/scss/benjamin.scss'
-
-    ])
-    .pipe(plumber({ errorHandler: handleErrors }))
-    .pipe(sourcemaps.init())
+    .pipe(sourcemaps.init({ largeFile: true }))
     .pipe(sass({
-      includePaths: [
-        paths.npmPath + '/uswds/src/stylesheets',
-        paths.scssGlob
-      ],
-      errLogToConsole: true,
-      outputStyle: 'expanded'
-    }))
-    .pipe(postcss([
-      autoprefixer({ browsers: ['last 2 version'] })
-    ]))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest( paths.assetsPath + '/css' ));
+        includePaths: [
+          `${PROJECT_SASS_SRC}`,
+          `${uswds}/scss`,
+          `${uswds}/scss/packages`,
+        ]
+      }))
+    .pipe(replace(
+      /\buswds @version\b/g,
+      'based on uswds v' + pkg.version
+    ))
+    .pipe(postcss(plugins))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(`${CSS_DEST}`));
 });
 
+gulp.task('init', gulp.series(
+  'copy-uswds-setup',
+  'copy-uswds-fonts',
+  'copy-uswds-images',
+  'copy-uswds-js',
+  'build-sass',
+));
 
-gulp.task('clean:front-css', function() {
-  return del(
-    [ paths.assetsPath + '/css' ],
-    {read:false, force: true});
+gulp.task('watch-sass', function () {
+  gulp.watch(`${PROJECT_SASS_SRC}/**/*.scss`, gulp.series('build-sass'));
 });
 
-// fonts
-gulp.task('front-fonts', function(){
-  return gulp.src(
-      [
-        paths.srcPath+'/fonts/**.woff',
-        paths.srcPath+'/fonts/**.woff2',
-      ])
-    .pipe(gulp.dest(paths.assetsPath + '/fonts'));
-});
+gulp.task('watch', gulp.series('build-sass', 'watch-sass'));
 
-gulp.task('clean:fonts', function() {
-   return del(
-     [ paths.assetsPath + '/fonts' ],
-     {read:false, force: true});
- });
-
-
-// images
-// image optimization
-gulp.task('front-img', function(){
-
-  return gulp.src([
-    paths.srcPath + '/img/**/*',
-    paths.npmPath + '/uswds/dist/img/**/*',
-  ])
-  .pipe(imagemin({
-    progressive: true,
-  }))
-  .pipe( gulp.dest( paths.assetsPath + '/img' ) );
-});
-
-gulp.task('clean:img', function(){
-  return del(
-    [ paths.assetsPath + '/img' ],
-    {read:false, force: true});
-});
-
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-//  The Admin
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-/**
- * Minify and optimize style.css.
- */
-gulp.task('admin-css', ['admin-sass'], function() {
-
-  return gulp.src([
-      paths.adminAssetsPath + '/css/benjamin-admin.css'
-    ])
-    .pipe(plumber({ errorHandler: handleErrors }))
-    .pipe(cssnano({ safe: true }))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest( paths.adminAssetsPath + '/css'));
-    // .pipe(notify({message: 'CSS complete'}));
-});
-
-
-/**
- * Compile Sass and run stylesheet through PostCSS.
- */
-gulp.task('admin-sass', ['clean:admin-css'], function() {
-
-  return gulp.src([
-      paths.adminSrcPath+'/scss/benjamin-admin.scss'
-    ])
-    .pipe(plumber({ errorHandler: handleErrors }))
-    .pipe(sourcemaps.init())
-    .pipe(sass({
-      includePaths: [ paths.adminScssGlob],
-      errLogToConsole: true,
-      outputStyle: 'expanded'
-    }))
-    .pipe(postcss([
-      autoprefixer({ browsers: ['last 2 version'] })
-    ]))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest( paths.adminAssetsPath + '/css' ));
-});
-
-
-gulp.task('clean:admin-css', function() {
-  return del(
-    [ paths.adminAssetsPath + '/css' ],
-    {read:false, force: true});
-});
-
-
-
-
-// browserfy is easier to update and manage thn manually concatinating files
-// mostly because we dont have to restart gulp when adding new files
-gulp.task('admin-js',['clean:admin-js'], function () {
-
-  var browserified = transform(function(filename) {
-    var b = browserify(filename);
-    return b.bundle();
-  });
-
-  return gulp.src([
-    paths.adminSrcPath + '/js/_benjamin-admin.js',
-    paths.adminSrcPath + '/js/_benjamin-customizer.js'
-  ] )
-  .pipe(plumber({ errorHandler: handleErrors }))
-  .pipe(browserified)
-  .pipe(minify())
-  .pipe(gulp.dest( paths.adminAssetsPath + '/js' ));
-});
-
-
-gulp.task('clean:admin-js', function() {
-
-  return del(
-    [ paths.adminAssetsPath + '/js' ],
-    {read:false, force: true});
-});
-
-
-// images
-// image optimization
-gulp.task('admin-img', function(){
-
-  return gulp.src([
-    paths.adminImgGlob
-  ])
-  .pipe(imagemin({
-    progressive: true,
-  }))
-  .pipe( gulp.dest( paths.adminAssetsPath + '/img' ) );
-});
-
-gulp.task('clean:admin-img', function(){
-  return del(
-    [ paths.adminAssetsPath + '/img' ],
-    {read:false, force: true});
-});
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-//  Utilities
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-gulp.task('pot', function () {
-
-    return gulp.src('../**/*.php')
-        .pipe(wpPot( {
-            domain: 'benjamin',
-            package: 'Example project'
-        } ))
-        .pipe(gulp.dest('../languages/benjamin.pot'));
-});
-
-/**
- * Handle errors.
- * plays a noise and display notification
- */
-function handleErrors() {
-  var args = Array.prototype.slice.call(arguments);
-  notify.onError({
-    title: 'Task Failed [<%= error.message %>',
-    message: 'See console.',
-    sound: 'Sosumi'
-  }).apply(this, args);
-  util.beep();
-  this.emit('end');
-}
-
-
-// CSS
-gulp.task('css', function(){
-  gulp.start('front-css');
-  gulp.start('admin-css');
-});
-
-
-/**
- * Builds the JS and CSS
- * @return {[type]} [description]
- */
-gulp.task('build-front', function(){
-  gulp.start('front-fonts');
-  gulp.start('front-img');
-  gulp.start('front-css');
-  gulp.start('front-js');
-});
-
-
-gulp.task('build-admin', function(){
-  gulp.start('admin-css');
-  gulp.start('admin-css');
-  gulp.start('admin-img');
-});
-
-
-
-/**
- * Builds the JS, CSS, images, and moves fonts
- * @return {[type]} [description]
- */
-gulp.task('build-all', function(){
-  gulp.start('front-fonts');
-  gulp.start('front-img');
-  gulp.start('front-css');
-  gulp.start('front-js');
-  
-  gulp.start('admin-css');
-  gulp.start('admin-js');
-  gulp.start('admin-img');
-});
-
-/**
- * Default Task, runs build and then watch
- * @return {[type]} [description]
- */
-gulp.task('default', function(){
-  gulp.start('build-all');
-});
-
-
-/**
- * Process tasks and reload browsers.
- */
-gulp.task('watch', function() {
-  gulp.start('build-all');
-  gulp.watch(paths.jsGlob, ['front-js']);
-  gulp.watch(paths.scssGlob, ['front-css']);
-  gulp.watch(paths.imgGlob, ['front-img']);
-  gulp.watch(paths.fontGlob, ['front-font']);
-  
-  gulp.watch(paths.adminJSGlob,['admin-js']);
-  gulp.watch(paths.adminScssGlob, ['admin-css']);
-  gulp.watch(paths.adminImgGlob, ['admin-img']);
-});
+gulp.task('default', gulp.series('watch'));

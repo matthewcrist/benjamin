@@ -24,19 +24,18 @@ class BenjaminFooterNavbarWalker extends Walker_Nav_Menu {
             }
         }
 
-
 		$classes = ($is_current && $depth == 0) ? ' usa-current': '';
 
-        $output .= '<li class="usa-width-one-sixth usa-footer-primary-content">';
+        $output .= '<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">';
 
         $link_class = ($depth == 0) ? 'usa-nav-link' : '';
 
         if( $permalink && $permalink != '#' ) {
-            $output .= '<a class="usa-footer-primary-link ' . esc_attr($classes) . '" href="' . esc_attr($permalink) . '">';
+            $output .= '<a class="usa-footer__primary-link ' . esc_attr($classes) . '" href="' . esc_attr($permalink) . '">';
                 $output .= '<span>' . $title . '</span>';
             $output .= '</a>';
         }else{
-            $output .= '<span class="usa-footer-primary-link ' . esc_attr($classes) . '">';
+            $output .= '<span class="usa-footer__primary-link ' . esc_attr($classes) . '">';
                 $output .= '<span>' . $title . '</span>';
             $output .= '</span>';
         }

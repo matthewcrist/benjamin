@@ -12,11 +12,20 @@
 ?>
 
 </main><!-- #main-content -->
-<footer class="usa-footer usa-footer-medium" role="contentinfo">
-    <?php
-        // inc/frontend/footer.php
-        benjamin_the_footer();
-?>
+<footer class="usa-footer usa-footer--medium" role="contentinfo">
+  <?php
+    // inc/frontend/footer.php
+    benjamin_the_footer();
+  ?>
+  <div class="usa-footer__secondary-section">
+    <div class="grid-container">
+      <div class="usa-footer__logo grid-row grid-gap-2">
+        <div class="grid-col-auto">
+          <div class="usa-footer__logo-heading"><?php bloginfo( 'name' ); ?></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <?php wp_footer(); ?>

@@ -15,18 +15,18 @@ if (version_compare($GLOBALS['wp_version'], '4.6', '<')) {
 }
 
 // Define some constants.
-define('BENJAMIN_FULL_WIDTH', 'usa-width-one-whole');
+define('BENJAMIN_FULL_WIDTH', 'desktop:grid-col-12');
 define('BENJAMIN_FULL_WIDTH_MEDIUM_UP', 'usa-width-full-medium-up');
 define('BENJAMIN_FULL_WIDTH_LARGE_UP', 'usa-width-full-large-up');
 
 // wide sidebar.
-define('BENJAMIN_TWO_THIRDS', 'usa-width-two-thirds');
-define('BENJAMIN_ONE_THIRD', 'usa-width-one-third');
+define('BENJAMIN_TWO_THIRDS', 'desktop:grid-col-8');
+define('BENJAMIN_ONE_THIRD', 'desktop:grid-col-4');
 
 // narrow sidebar.
-define('BENJAMIN_ONE_FOURTH', 'usa-width-one-fourth');
-define('BENJAMIN_THREE_FOURTHS', 'usa-width-three-fourths');
-define('BENJAMIN_ONE_HALF', 'usa-width-one-half');
+define('BENJAMIN_ONE_FOURTH', 'desktop:grid-col-3');
+define('BENJAMIN_THREE_FOURTHS', 'desktop:grid-col-9');
+define('BENJAMIN_ONE_HALF', 'desktop:grid-col-6');
 
 
 // misc.

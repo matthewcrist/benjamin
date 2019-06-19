@@ -4,7 +4,7 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 
     private function menuStyleArgs($style = 'side_nav'){
         if($style == 'side_nav'):
-            $class = 'usa-sidenav-list sticky';
+            $class = 'usa-sidenav sticky';
             $walker = new BenjaminSideNavWalker();
         elseif($style == 'nav_list'):
             $class = 'usa-unstyled-list';
@@ -42,7 +42,7 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 
 		/** Adding a class if this is a side_nav */
 		if ($instance['menu_style'] === 'side_nav') {
-			$before_widget = str_replace("widget", "widget sticky ", $args['before_widget']);
+			$before_widget = str_replace("widget", "widget sticky", $args['before_widget']);
 		}
 
 		echo $before_widget; //WPCS: xss ok.

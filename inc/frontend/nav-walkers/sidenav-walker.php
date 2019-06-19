@@ -8,7 +8,7 @@ class BenjaminSideNavWalker extends Walker_Nav_Menu {
 
     function start_lvl( &$output, $depth = 0, $args = array() ) {
 
-		$output .= '<ul class="usa-sidenav-sub_list">';
+		$output .= '<ul class="usa-sidenav__sublist">';
 	}
 
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
@@ -34,7 +34,7 @@ class BenjaminSideNavWalker extends Walker_Nav_Menu {
 
 		$classes = $is_current ? 'usa-current': '';
 
-        $output .= '<li>';
+        $output .= '<li class="usa-sidenav__item">';
 
         $link_class = ($depth == 0) ? 'usa-nav-link' : '';
 

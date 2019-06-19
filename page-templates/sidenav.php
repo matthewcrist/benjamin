@@ -1,8 +1,9 @@
 <?php
 /*
-Template Name: Sidenav Page
+Template Name: Template Page 1
 
-This template is used to display a sidenav for l o n g content
+This is a copy of the standard "page" template, but exists to allow some
+deviations to standard pages
 
 */
 
@@ -18,40 +19,43 @@ get_header();
  * $sidebar_position
  *
  */
-extract( benjamin_template_settings() );
-
-if( !$hide_content ):
+extract(benjamin_template_settings());
+if(!$hide_content):
 ?>
-<section id="breadcrumbs" class="usa-grid usa-section usa-section--smallVerticalSpacing">
-    <?php
-        if ( function_exists('yoast_breadcrumb') ) {
-            yoast_breadcrumb( '<div class="breadcrumbs">','</div>' );
-        }
-    ?>
-</section>
-<section id="primary" class="usa-grid usa-section usa-section--withBreadcrumb">
-    <?php
-    if($sidebar_position == 'left'):
-        benjamin_sticky_sidenav($post->ID);
-    endif;
-    ?>
-    <div class="main-content usa-width-two-thirds">
-    	<?php
-    	while ( have_posts() ) : the_post();
-
-    		get_template_part( 'template-parts/singles/content', 'page' );
-
-    	endwhile; // End of the loop.
-    	?>
+<section id="primary">
+    <div class="grid-container margin-top-4">
+        <?php
+            if ( function_exists('yoast_breadcrumb') ) {
+                yoast_breadcrumb( '<div class="breadcrumbs">','</div>' );
+            }
+        ?>
     </div>
-    <?php
-    if($sidebar_position == 'right'):
-        benjamin_sticky_sidenav($post->ID);
-    endif;
-    ?>
+    <div class="grid-container margin-top-4">
+        <div class="grid-row grid-gap">
+            <?php
+            if($sidebar_position == 'left'):
+                benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
+            endif;
+            ?>
+            <div class="main-content <?php echo esc_attr($main_width); ?>">
+                <?php
+                while (have_posts()) : the_post();
 
+                    get_template_part('template-parts/singles/content', 'page');
+
+                endwhile; // End of the loop.
+                ?>
+            </div>
+            <?php
+            if($sidebar_position == 'right'):
+                benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
+            endif;
+            ?>
+        </div>
+    </div>
 </section>
 
 <?php
 endif;
+
 get_footer();

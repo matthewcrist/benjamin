@@ -24,6 +24,45 @@ var replace       = require('gulp-replace');
 var sass          = require('gulp-sass');
 var sourcemaps    = require('gulp-sourcemaps');
 var uswds         = require('./node_modules/uswds-gulp/config/uswds');
+var browserSync   = require('browser-sync');
+var reload        = browserSync.reload;
+
+/*
+----------------------------------------
+PROJECT SETTINGS 
+----------------------------------------
+- All paths are relative to the
+  project root
+- Don't use a trailing `/` for path
+  names
+----------------------------------------
+*/
+var project 		  = 'ctoec';
+var url 	  	    = 'ctoec.dev';
+var build 		    = './buildtheme/';
+var buildInclude 	= [
+                      // include common file types
+                      '**/*.php',
+                      '**/*.html',
+                      '**/*.css',
+                      '**/*.js',
+                      '**/*.svg',
+                      '**/*.ttf',
+                      '**/*.otf',
+                      '**/*.eot',
+                      '**/*.woff',
+                      '**/*.woff2',
+
+                      // include specific files and folders
+                      'screenshot.png',
+
+                      // exclude files and folders
+                      '!node_modules/**/*',
+                      '!assets/bower_components/**/*',
+                      '!style.css.map',
+                      '!assets/js/custom/*',
+                      '!assets/css/patrials/*'
+                    ];
 
 /*
 ----------------------------------------
@@ -103,7 +142,24 @@ gulp.task('build-sass', function(done) {
     ))
     .pipe(postcss(plugins))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(`${CSS_DEST}`));
+    .pipe(gulp.dest(`${CSS_DEST}`))
+    .pipe(reload({stream:true}));
+});
+
+
+gulp.task('browser-sync', function() {
+	var files = [
+			          '**/*.php',
+			          '**/*.{png,jpg,gif}'
+              ];
+              
+	browserSync.init(files, {
+		// Read here http://www.browsersync.io/docs/options/
+		proxy: 'localhost:8080',
+
+		// Inject CSS changes
+		injectChanges: true
+	});
 });
 
 gulp.task('init', gulp.series(
@@ -118,6 +174,6 @@ gulp.task('watch-sass', function () {
   gulp.watch(`${PROJECT_SASS_SRC}/**/*.scss`, gulp.series('build-sass'));
 });
 
-gulp.task('watch', gulp.series('build-sass', 'watch-sass'));
+gulp.task('watch', gulp.series('browser-sync', 'build-sass', 'watch-sass'));
 
 gulp.task('default', gulp.series('watch'));

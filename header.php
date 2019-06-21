@@ -18,4 +18,4 @@
 
 <div class="usa-overlay"></div>
 
-<main id="main-content" role="main">
+<main id="usa-prose" role="main">

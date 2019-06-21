@@ -1693,7 +1693,7 @@ var _require2 = require('../config'),
     PREFIX = _require2.prefix;
 
 var LINK = '.' + PREFIX + '-skipnav[href^="#"], .' + PREFIX + '-footer__return-to-top [href^="#"]';
-var MAINCONTENT = 'main-content';
+var MAINCONTENT = 'usa-prose';
 
 function setTabindex() {
   // NB: we know because of the selector we're delegating to below that the

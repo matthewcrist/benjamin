@@ -6,7 +6,7 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
 <header class="usa-header border-bottom border-primary-lighter" role="banner">
   <div class="usa-nav-container">
     <div class="display-flex flex-align-center">
-      <div class="flex-fill padding-x-2 desktop:padding-x-0 padding-y-1 desktop:padding-y-3">
+      <div class="flex-fill padding-x-2 desktop:padding-x-0 padding-y-2">
         <?php benjamin_navbar_brand(); ?>
       </div>
       <button class="usa-menu-btn">Menu</button>

@@ -174,6 +174,6 @@ gulp.task('watch-sass', function () {
   gulp.watch(`${PROJECT_SASS_SRC}/**/*.scss`, gulp.series('build-sass'));
 });
 
-gulp.task('watch', gulp.series('browser-sync', 'build-sass', 'watch-sass'));
+gulp.task('watch', gulp.series('build-sass', 'watch-sass'));
 
 gulp.task('default', gulp.series('watch'));

@@ -11,7 +11,7 @@
 
 ?>
 
-</main><!-- #main-content -->
+</main><!-- #usa-prose -->
 <footer class="usa-footer usa-footer--medium" role="contentinfo">
   <?php
     // inc/frontend/footer.php

@@ -48,7 +48,7 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 			$before_widget .= '<h2 class="usa-accordion__heading desktop:display-none">';
 			$before_widget .= '<button class="usa-accordion__button" aria-expanded="true" aria-controls="subnav">On this page...</button>';
 			$before_widget .= '</h2>';
-			$before_widget .= '<div id="subnav" class="usa-accordion__content padding-x-4 padding-bottom-4 desktop:padding-0">';
+			$before_widget .= '<div id="subnav" class="usa-accordion__content padding-3 padding-bottom-4 bg-base-lightest">';
 		}
 
 		echo $before_widget; //WPCS: xss ok.

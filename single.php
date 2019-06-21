@@ -37,7 +37,7 @@ if (! $hide_content) :
         benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
     endif;
     ?>
-    <div class="main-content <?php echo esc_attr($main_width); ?>">
+    <div class="usa-prose <?php echo esc_attr($main_width); ?>">
         <?php
         while (have_posts()) :
             the_post();

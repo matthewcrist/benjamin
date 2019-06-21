@@ -31,6 +31,8 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 	 * @param array $instance Settings for the current Custom Menu widget instance.
 	 */
 	public function widget( $args, $instance ) {
+		$before_widget = $args['before_widget'];
+
 		// Get menu
 		$nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
 		
@@ -42,7 +44,11 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 
 		/** Adding a class if this is a side_nav */
 		if ($instance['menu_style'] === 'side_nav') {
-			$before_widget = str_replace("widget", "widget sticky", $args['before_widget']);
+			$before_widget 	= '<div class="usa-accordion margin-bottom-3">';
+			$before_widget .= '<h2 class="usa-accordion__heading desktop:display-none">';
+			$before_widget .= '<button class="usa-accordion__button" aria-expanded="true" aria-controls="subnav">On this page...</button>';
+			$before_widget .= '</h2>';
+			$before_widget .= '<div id="subnav" class="usa-accordion__content padding-x-4 padding-bottom-4 desktop:padding-0 bg-gray-5 desktop:bg-white">';
 		}
 
 		echo $before_widget; //WPCS: xss ok.
@@ -57,7 +63,7 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
             'container' => '',
             'menu_class'    => $class,
             'walker' 		=> $walker,
-			'menu'      	=> $nav_menu
+						'menu'      	=> $nav_menu
 		);
 
 		/**
@@ -77,7 +83,15 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 		 * @param array    $instance      Array of settings for the current widget.
 		 */
 		wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance ) );
-		echo $args['after_widget'];  //WPCS: xss ok.
+
+		$after_widget = $args['after_widget'];
+
+		/** Adding a class if this is a side_nav */
+		if ($instance['menu_style'] === 'side_nav') {
+			$after_widget 	= '</div></div>';
+		}
+
+		echo $after_widget;
 	}
 
 	/**

@@ -20,10 +20,9 @@ i.e.
 ----------------------------------------
 */
 
-.usa-logo__image {
-  display: block; 
-  
-  img {
-    height: 45px;
+
+.usa-sidenav {
+  & > .usa-sidenav__item:last-child {
+    border-bottom: none;
   }
 }

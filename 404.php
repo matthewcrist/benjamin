@@ -35,7 +35,7 @@ extract(benjamin_get_404_settings());
 if (!$hide_content):
 ?>
 
-<section id="primary" class="usa-grid usa-section">
+<section id="primary" class="grid-container">
     <?php
     if ($sidebar_position == 'left') :
         benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);

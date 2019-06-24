@@ -9,14 +9,12 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('entry'); ?>>
-    <div class="entry-header">
-        <h1 class="margin-0"><?php the_title() ?></h1>
-        <div class="entry-updated">Last updated <?php the_modified_date('F j, Y'); ?></div>
+<article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
+    <div class="margin-top-neg-05">
+        <h1 class="margin-0 margin-bottom-1 font-heading-3xl line-height-mono-1"><?php the_title() ?></h1>
+        <div class="text-violet text-uppercase">Last updated <?php the_modified_date('F j, Y'); ?></div>
     </div>
-    <div class="entry-content">
-        <?php the_content(); ?>
-    </div><!-- .entry-content -->
+    <?php the_content(); ?>
     <?php if (get_edit_post_link()) : ?>
         <footer class="entry-footer">
             <?php

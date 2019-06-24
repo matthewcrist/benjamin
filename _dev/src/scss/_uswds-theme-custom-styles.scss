@@ -20,9 +20,6 @@ i.e.
 ----------------------------------------
 */
 
-
-.usa-sidenav {
-  & > .usa-sidenav__item:last-child {
-    border-bottom: none;
-  }
+.wp-block-table {
+  @extend .usa-table;
 }

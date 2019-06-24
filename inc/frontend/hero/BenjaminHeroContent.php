@@ -575,7 +575,7 @@ class BenjaminHeroContent
 
         $output = '';
 
-        $output .= '<div class="usa-hero__callout background-primary">';
+        $output .= '<div class="usa-hero__callout">';
             $output .= '<h1 class="margin-0 line-height-mono-2 font-sans-xl tablet:font-sans-2xl">' . $title . '</h1>';
 
                 if ( trim($description) !== '' || is_customize_preview() )

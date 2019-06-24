@@ -20,6 +20,17 @@ i.e.
 ----------------------------------------
 */
 
+.usa-dark-background,
+.usa-hero__callout {
+  background-color: rgb(91, 58, 108);
+}
+
 .wp-block-table {
   @extend .usa-table;
+}
+
+.wp-block-simple-alert {
+  @include u-bg('gold-10v');
+  @include u-padding('2');
+  @include u-margin-top('2');
 }

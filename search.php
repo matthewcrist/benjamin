@@ -30,14 +30,14 @@ if(!$hide_content):
 ?>
 
 
-<section id="primary" class="usa-grid usa-section">
+<section id="primary" class="grid-container">
     <?php
     if ($sidebar_position == 'left') :
         benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
     endif;
     ?>
 
-    <div class="main-content <?php echo esc_attr($main_width); ?>">
+    <div class="usa-prose <?php echo esc_attr($main_width); ?>">
     <?php
     if (have_posts()) :
         if (is_home() && ! is_front_page()) : ?>

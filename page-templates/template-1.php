@@ -22,34 +22,37 @@ get_header();
 extract(benjamin_template_settings());
 if(!$hide_content):
 ?>
-<section id="breadcrumbs" class="usa-grid usa-section usa-section--smallVerticalSpacing">
-    <?php
-        if ( function_exists('yoast_breadcrumb') ) {
-            yoast_breadcrumb( '<div class="breadcrumbs">','</div>' );
-        }
-    ?>
-</section>
-<section id="primary" class="usa-grid usa-grid--flex usa-section usa-section--withBreadcrumb">
-    <?php
-    if($sidebar_position == 'left'):
-        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
-    endif;
-    ?>
-    <div class="main-content <?php echo esc_attr($main_width); ?>">
+<section id="primary">
+    <div class="grid-container margin-top-4">
         <?php
-        while (have_posts()) : the_post();
-
-            get_template_part('template-parts/singles/content', 'page');
-
-        endwhile; // End of the loop.
+            if ( function_exists('yoast_breadcrumb') ) {
+                yoast_breadcrumb( '<div class="breadcrumbs">','</div>' );
+            }
         ?>
     </div>
-    <?php
-    if($sidebar_position == 'right'):
-        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
-    endif;
-    ?>
+    <div class="grid-container margin-top-4">
+        <div class="grid-row grid-gap">
+            <?php
+            if($sidebar_position == 'left'):
+                benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
+            endif;
+            ?>
+            <div class="usa-prose <?php echo esc_attr($main_width); ?>">
+                <?php
+                while (have_posts()) : the_post();
 
+                    get_template_part('template-parts/singles/content', 'page');
+
+                endwhile; // End of the loop.
+                ?>
+            </div>
+            <?php
+            if($sidebar_position == 'right'):
+                benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
+            endif;
+            ?>
+        </div>
+    </div>
 </section>
 
 <?php

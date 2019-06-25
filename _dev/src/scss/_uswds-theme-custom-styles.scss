@@ -1,0 +1,36 @@
+/*
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+========================================
+========================================
+========================================
+----------------------------------------
+USWDS THEME CUSTOM STYLES
+----------------------------------------
+!! Copy this file to your project's
+   sass root. Don't edit the version
+   in node_modules.
+----------------------------------------
+Custom project SASS goes here.
+
+i.e.
+@include u-padding-right('05');
+----------------------------------------
+*/
+
+.usa-dark-background,
+.usa-hero__callout {
+  background-color: rgb(91, 58, 108);
+}
+
+.wp-block-table {
+  @extend .usa-table;
+}
+
+.wp-block-simple-alert {
+  @include u-bg('gold-10v');
+  @include u-padding('2');
+  @include u-margin-top('2');
+}

@@ -22,7 +22,7 @@ i.e.
 
 .usa-dark-background,
 .usa-hero__callout {
-  background-color: rgb(91, 58, 108);
+  @include u-bg('blue-50');
 }
 
 .wp-block-table {

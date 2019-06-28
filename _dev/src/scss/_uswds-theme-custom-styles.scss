@@ -20,6 +20,19 @@ i.e.
 ----------------------------------------
 */
 
+.usa-prose,
+.breadcrumbs {
+  a:link,
+  a:visited,
+  a:hover {
+    @include u-color('blue-50');
+  }
+
+  a:hover {
+    @include u-text('no-underline');
+  }
+}
+
 .usa-dark-background,
 .usa-hero__callout {
   @include u-bg('blue-50');
@@ -27,6 +40,7 @@ i.e.
 
 .wp-block-table {
   @extend .usa-table;
+  @include u-width('full');
 }
 
 .wp-block-simple-alert {

@@ -1,7 +1,9 @@
 window.onscroll = function() {scrollFunction()};
 
+var scrollMin = window.innerHeight * 2;
+
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > scrollMin || document.documentElement.scrollTop > scrollMin) {
     document.getElementById("backtotop").style.display = "block";
   } else {
     document.getElementById("backtotop").style.display = "none";

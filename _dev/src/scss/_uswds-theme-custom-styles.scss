@@ -48,3 +48,16 @@ i.e.
   @include u-padding('2');
   @include u-margin-top('2');
 }
+
+.searchandfilter {
+  @extend .usa-form;
+}
+
+.searchandfilter ul,
+.sf_date_field {
+  @include unstyled-list;
+}
+
+.sf-input-text {
+  @extend .usa-input;
+}

@@ -9,7 +9,7 @@
 
 <body <?php body_class(); ?>>
 
-<a class="usa-skipnav" href="primary"><?php esc_html_e('Skip to main content', 'benjamin'); ?></a>
+<a class="usa-skipnav" href="#primary"><?php esc_html_e('Skip to main content', 'benjamin'); ?></a>
 
 <?php
     benjamin_the_header();

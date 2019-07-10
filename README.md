@@ -107,17 +107,17 @@ Here are a list of the currently available shortcodes in [Franklin](https://gith
 ### Setup dev env
 ```bash
 cd _dev
-npm install
+yarn
 ```
 
 ### Watch for CSS and JS changes
 ```bash
 # inside _dev folder
-npm run watch
+yarn run watch
 ```
 
 ### Build CSS and JS
 ```bash
 # inside _dev folder
-npm run build
+yarn run build
 ```

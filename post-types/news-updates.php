@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Registers the `news` post type.
+ * Registers the 'news' post type.
  */
 // Register Custom Post Type
 function news_init() {
@@ -84,3 +84,20 @@ function remove_meta_boxes_news() {
 	remove_meta_box('wpseo_meta', 'news', 'normal');
 }
 add_action('add_meta_boxes', 'remove_meta_boxes_news', 100);
+
+add_action( 'widgets_init', 'news_sidebar' );
+function news_sidebar() {
+  $args = array(
+    'name'          => 'News Sidebar',
+    'id'            => 'news-sidebar',
+    'description'   => 'The News Sidebar is shown on the left hand side of news & updates pages in this theme',
+    'class'         => '',
+    'before_widget' => '<li id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</li>',
+    'before_title'  => '<h2 class="widgettitle">',
+    'after_title'   => '</h2>' 
+  );
+
+  register_sidebar( $args );
+
+}

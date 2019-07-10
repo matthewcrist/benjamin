@@ -74,7 +74,6 @@ This replaces the "sticky" feature and works on all custom post types
 
 #### Footer Settings
 * The footer is made up of optional, sortable components like:
-* return to top link
 * footer menu area
 * and 2 widget areas
 

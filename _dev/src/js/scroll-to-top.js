@@ -1,8 +1,7 @@
-window.onscroll = function() {scrollFunction()};
-
 var scrollMin = window.innerHeight * 2;
 
-function scrollFunction() {
+window.onscroll = function() {
+
   var el = document.getElementById("backtotop");
 
   if (document.body.scrollTop > scrollMin || document.documentElement.scrollTop > scrollMin) {
@@ -10,4 +9,5 @@ function scrollFunction() {
   } else {
     el.hidden = true;
   }
-}
+
+};

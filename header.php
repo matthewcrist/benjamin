@@ -7,8 +7,6 @@
 <?php wp_head(); ?>
 </head>
 
-<button onclick="topFunction()"  aria-hidden="true" id="backtotop" title="Go to top">Top</button>
-
 <body <?php body_class(); ?>>
 
 <a class="usa-skipnav" href="primary"><?php esc_html_e('Skip to main content', 'benjamin'); ?></a>

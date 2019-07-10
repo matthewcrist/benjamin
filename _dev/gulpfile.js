@@ -194,4 +194,6 @@ gulp.task('watch-assets', function () {
 
 gulp.task('watch', gulp.series('build-sass', 'build-js', 'watch-assets'));
 
+gulp.task('build', gulp.series('build-sass', 'build-js'));
+
 gulp.task('default', gulp.series('watch'));

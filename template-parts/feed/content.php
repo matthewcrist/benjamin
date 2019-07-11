@@ -8,61 +8,28 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry cf' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'margin-bottom-6' ); ?>>
     
-    <header class="entry-header">
-        <h3 class="entry-title">
-        <?php
-            echo benjamin_get_feed_entry_title(); // WPCS: xss ok.
-        ?>
-        </h3>
+    <header class="margin-top-6">
+        <h3 class="margin-top-0 margin-bottom-0 font-heading-xl line-height-mono-1"><?php the_title(); ?></h3>
     </header><!-- .entry-header -->
 
-    <div class="grid">
-        <?php
+    <?php
         if(class_exists('BenjaminPostFormat')) {
             benjamin_post_format_markup( $post, get_post_format() );
         }
         ?>
+        <?php
 
-        <div class="usa-width-one-fourth">
+        the_content( sprintf(
+            wp_kses(
+                /* translators: %s: Name of current post. */
+                __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'benjamin' ),
+                array( 'span' => array( 'class' => array() ) )
+            ),
+            the_title( '<span class="screen-reader-text">"', '"</span>', false )
+            )
+        );
 
-            <?php 
-                benjamin_post_thumbnail( $post );
-            ?>
-
-            <?php
-            if ( 'page' !== get_post_type() ) :
-            ?>
-                <div class="entry-meta">
-            <?php
-                echo benjamin_get_the_date(); // WPCS: xss ok.
-                echo benjamin_get_the_author(); // WPCS: xss ok.
-
-                echo benjamin_get_the_comment_popup(); // WPCS: xss ok.
-                echo benjamin_get_categories_links(); // WPCS: xss ok.
-                echo benjamin_get_tags_links(); // WPCS: xss ok.
-            ?>
-            </div><!-- .entry-meta -->
-            <?php
-            endif;
-            ?>
-        </div>
-
-        <div class="entry-content usa-width-three-fourths">
-            <?php
-
-                the_content( sprintf(
-                    wp_kses(
-                        /* translators: %s: Name of current post. */
-                        __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'benjamin' ),
-                        array( 'span' => array( 'class' => array() ) )
-                    ),
-                    the_title( '<span class="screen-reader-text">"', '"</span>', false )
-                    )
-                );
-
-            ?>
-        </div><!-- .entry-content -->
-    </div>
+    ?>
 </article><!-- #post-## -->

@@ -10,7 +10,7 @@ class BenjaminNavbarWalker extends Walker_Nav_Menu {
     public function start_lvl( &$output, $depth = 0, $args = array() ) {
 
         $id = 'side-nav-'.$this->curItem->menu_order;
-		$output .= '<ul class="usa-nav-submenu" id="'.$id.'" aria-hidden="true">';
+		$output .= '<ul class="usa-nav__submenu" id="'.$id.'" hidden>';
 	}
 
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
@@ -38,14 +38,15 @@ class BenjaminNavbarWalker extends Walker_Nav_Menu {
 		$classes = ($is_current && $depth == 0) ? ' usa-current': '';
         $child_active = $item->current_item_ancestor || in_array('current-page-ancestor', $item->classes) ? 'child-active' : '';
 
-        $output .= '<li>';
+        $li_classes = ($depth == 0) ? 'usa-nav__primary-item' : 'usa-nav__submenu-item';
+        $output .= '<li class="' . esc_attr($li_classes) . '">';
 
-        $link_class = ($depth == 0) ? 'usa-nav-link' : '';
+        $link_class = ($depth == 0) ? 'usa-nav__link' : '';
         $link_class .= $classes;
 
         if($depth == 0 && $args->walker->has_children){
             
-            $output  .= '<button class=" usa-accordion-button usa-nav-link ' . esc_attr( $child_active ) . '"
+            $output  .= '<button class="usa-accordion__button usa-nav__link ' . esc_attr( $child_active ) . '"
             aria-expanded="false" aria-controls="side-nav-' . esc_attr($item->menu_order) . '">';
                 $output .= '<span>'.$title.'</span>';
             $output .= '</button>';

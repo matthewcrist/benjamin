@@ -70,25 +70,25 @@ function benjamin_calculate_widget_width($count){
 
     switch($count):
         case 1:
-            return 'usa-width-one-whole';
+            return 'desktop:grid-col-12';
             break;
         case 2:
-            return 'usa-width-one-half';
+            return 'desktop:grid-col-6';
             break;
         case 3:
-            return 'usa-width-one-third';
+            return 'desktop:grid-col-4';
             break;
         case 4:
-            return 'usa-width-one-fourth';
+            return 'desktop:grid-col-3';
             break;
         case 5:
-            return 'usa-width-one-sixth';
+            return 'desktop:grid-col-2';
             break;
         case 6:
-            return 'usa-width-one-sixth';
+            return 'desktop:grid-col-2';
             break;
         default:
-            return 'usa-width-one-twelfth';
+            return 'desktop:grid-col-12';
             break;
     endswitch;
 

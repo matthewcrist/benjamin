@@ -4,11 +4,11 @@
  * Custom nav walker for the sidebar style navs
  */
 class BenjaminSideNavWalker extends Walker_Nav_Menu {
-
+    static $count = 0;
 
     function start_lvl( &$output, $depth = 0, $args = array() ) {
 
-		$output .= '<ul class="usa-sidenav-sub_list">';
+		$output .= '<ul class="usa-sidenav__sublist">';
 	}
 
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
@@ -16,7 +16,6 @@ class BenjaminSideNavWalker extends Walker_Nav_Menu {
     }
 
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-
         $object = $item->object;
         $type = $item->type;
         $title = $item->title;
@@ -32,9 +31,11 @@ class BenjaminSideNavWalker extends Walker_Nav_Menu {
             }
         }
 
-		$classes = $is_current ? 'usa-current': '';
+        $classes = $is_current ? 'usa-current': '';
 
-        $output .= '<li>';
+        $item_class = (self::$count == 0) ? 'usa-sidenav__item border-top-0' : 'usa-sidenav__item';
+
+        $output .= '<li class="' . esc_attr($item_class) . '">';
 
         $link_class = ($depth == 0) ? 'usa-nav-link' : '';
 
@@ -49,7 +50,6 @@ class BenjaminSideNavWalker extends Walker_Nav_Menu {
             $output .= '</span>';
         }
 
+        self::$count++;
 	}
-
-
 }

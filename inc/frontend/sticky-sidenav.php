@@ -8,7 +8,7 @@ function benjamin_get_sticky_sidenav($id = 0){
     $output = '';
 
     $output .= '<aside class="sidenav sticky usa-width-one-third">';
-        $output .= '<ul class="usa-sidenav-list">';
+        $output .= '<ul class="usa-sidenav">';
         foreach($anchors as $anchor):
             $label = str_replace(array('-','_'),' ', $anchor);
             $output .= '<li>';

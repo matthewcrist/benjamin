@@ -27,17 +27,17 @@ extract( benjamin_template_settings() );
 if( !$hide_content ):
 ?>
 
+<section id="primary" class="grid-container">
+    <?php
+        if($sidebar_position == 'left'):
+            benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
+        endif;
+    ?>
 
-<section id="primary" class="usa-grid usa-section">
-    <div class="main-content usa-width-two-thirds">
-        <?php if ( is_active_sidebar( 'home_main' ) ) : ?>
-            <?php dynamic_sidebar( 'home_main' ); ?>
-        <?php endif; ?>
-    </div>
-    <div class="sidebar usa-width-one-third always-visible">
-        <?php if ( is_active_sidebar( 'home_sidebar' ) ) : ?>
-            <?php dynamic_sidebar( 'home_sidebar' ); ?>
-        <?php endif; ?>
+    <div class="usa-prose <?php echo esc_attr($main_width); ?>">
+    	<?php
+            benjamin_page_sortables('frontpage_sortables_setting');
+        ?>
     </div>
 </section>
 

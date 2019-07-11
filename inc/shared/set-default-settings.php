@@ -23,11 +23,9 @@ function benjamin_get_default_header_srotables()
 function benjamin_get_default_footer_sortables()
 {
 
-    $return_label = __('Return to top', 'benjamin');
     $footer_label = __('Footer menu', 'benjamin');
 
     $json = '[';
-    $json .= '{"name":"return-to-top","label":"' . $return_label . '"},';
     $json .= '{"name":"footer-menu","label":"' . $footer_label . '"}';
     $json .= ']';
 

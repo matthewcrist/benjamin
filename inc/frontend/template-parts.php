@@ -84,9 +84,6 @@ function benjamin_the_footer() {
         $name = $s->name;
 
         switch($name):
-            case 'return-to-top':
-                require get_template_directory() . '/inc/frontend/footers/footer-return.php';
-                break;
             case 'footer-menu':
                 require get_template_directory() . '/inc/frontend/footers/footer-menu.php';
                 break;

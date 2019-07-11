@@ -29,6 +29,6 @@
 </footer>
 
 <?php wp_footer(); ?>
-
+<a href="#primary" class="usa-button usa-button--secondary position-fixed z-100 text-uppercase right-2 bottom-3" id="backtotop" title="Go to top" hidden>Top</a>
 </body>
 </html>

@@ -49,6 +49,10 @@ i.e.
   @include u-margin-top('2');
 }
 
+.searchandfilter label {
+  @include u-display('block');
+}
+
 .searchandfilter {
   @extend .usa-form;
 }
@@ -60,4 +64,10 @@ i.e.
 
 .sf-input-text {
   @extend .usa-input;
+}
+
+.sf-field-submit {
+  input {
+    @extend .usa-button;
+  }
 }

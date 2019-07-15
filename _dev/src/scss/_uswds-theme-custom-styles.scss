@@ -48,3 +48,12 @@ i.e.
   @include u-padding('2');
   @include u-margin-top('2');
 }
+
+#scrolltotop {
+  box-shadow: 0 .5rem 1rem 0 rgba(0,0,0,.5);
+  @include u-z(100);
+  @include u-position('fixed');
+  @include u-text('uppercase');
+  @include u-right(2);
+  @include u-bottom(3);
+}

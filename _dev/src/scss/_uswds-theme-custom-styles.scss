@@ -38,6 +38,22 @@ i.e.
   @include u-bg('blue-50');
 }
 
+.usa-light-background {
+  @include u-bg('blue-40');
+}
+
+#menu-main-navigation {
+  button[aria-expanded="true"] {
+    @include u-bg('blue-70v');
+  }
+
+  .usa-nav__submenu {
+    @include u-bg('blue-70v');
+  }
+}
+
+
+
 .wp-block-table {
   @extend .usa-table;
   @include u-width('full');

@@ -50,7 +50,7 @@ i.e.
 }
 
 #scrolltotop {
-  box-shadow: 0 .5rem 1rem 0 rgba(0,0,0,.5);
+  @include u-shadow(3);
   @include u-z(100);
   @include u-position('fixed');
   @include u-text('uppercase');

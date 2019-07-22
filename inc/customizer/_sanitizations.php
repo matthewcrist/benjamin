@@ -54,7 +54,6 @@ function benjamin_404_content_sanitize($val) {
 function benjamin_footer_sortable_sanitize($val) {
 
     $valids = array(
-        'return-to-top',
         'footer-menu',
         'widget-area-1',
         'widget-area-2',

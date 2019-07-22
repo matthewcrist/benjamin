@@ -98,3 +98,12 @@ Primary Nav Customizations
     }
   }
 }
+  
+#scrolltotop {
+  @include u-shadow(3);
+  @include u-z(100);
+  @include u-position('fixed');
+  @include u-text('uppercase');
+  @include u-right(2);
+  @include u-bottom(3);
+}

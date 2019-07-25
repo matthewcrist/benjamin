@@ -56,12 +56,13 @@ Primary Nav Customizations
 */
 
 .usa-nav__primary {
-  button.usa-nav__link {
+  .usa-nav__link {
     @extend .border-transparent;
     @extend .border-x;
     @extend .border-top;
     position: relative;
     z-index: 100;
+    white-space: nowrap;
   }
 
   button.usa-nav__link[aria-expanded=true] {

@@ -54,6 +54,21 @@ i.e.
   @include u-z(100);
   @include u-position('fixed');
   @include u-text('uppercase');
-  @include u-right(2);
   @include u-bottom(3);
+  &:before {
+    content: 'Scroll to top';
+  }
+
+  @include at-media('tablet') {
+    @include u-right(2);
+  }
+
+  @include at-media-max('tablet') {
+    &:before {
+      content: 'top';
+    }
+    @include u-width(auto);
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

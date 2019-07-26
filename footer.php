@@ -29,6 +29,6 @@
 </footer>
 
 <?php wp_footer(); ?>
-<a href="#primary" class="usa-button usa-button--secondary" id="scrolltotop" title="Scroll to top" hidden>Scroll to top</a>
+<a href="#primary" class="usa-button usa-button--secondary" id="scrolltotop" title="Scroll to top" hidden></a>
 </body>
 </html>

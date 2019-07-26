@@ -108,3 +108,27 @@ Primary Nav Customizations
   @include u-right(2);
   @include u-bottom(3);
 }
+
+#google_translate_element {
+  width:300px;
+  float:right;
+  text-align:right;
+  display:block
+}
+
+.goog-te-banner-frame.skiptranslate,
+.activity-root,
+.status-message,
+.started-activity-container { 
+  display: none !important;
+} 
+
+body { 
+  top: 0px !important; 
+}
+
+#goog-gt-tt, 
+.goog-tooltip skiptranslate {
+  display: none !important; 
+  top: 0px !important; 
+}

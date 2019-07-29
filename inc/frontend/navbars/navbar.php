@@ -56,6 +56,9 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
                   <span>Kreyòl Ayisyen</span>
                 </a>
               </li>
+              <li class="usa-translate__power">
+                <?php include(get_template_directory() . '/assets/frontend/img/translate.svg'); ?>
+              </li>
             </ul>
           </li>
         </ul>

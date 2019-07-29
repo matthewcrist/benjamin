@@ -80,6 +80,16 @@ Primary Nav Customizations
     @extend .border;
     @extend .border-base-lighter;
 
+    .usa-translate__power {
+      @include u-padding-y(1.5);
+      @include u-padding-x(2);
+
+      svg {
+        height: 27px;
+        width: 58.62px;
+      }
+    }
+
     .usa-nav__submenu-item {
       @include u-margin(0);
 

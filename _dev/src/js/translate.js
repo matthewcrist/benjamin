@@ -6,14 +6,6 @@ const googleTranslateConfig = {
 
 window.TranslateInit = function() {
     let code = TranslateGetCode();
-
-    let selectedLanguage = document.querySelector('[data-google-lang="' + code + '"]');
-    if (selectedLanguage !== null && code !== 'en') {
-        let button = document.getElementById('selectedLanguage');
-        button.innerText = selectedLanguage.textContent.trim();
-    }
-
-
     if (code == googleTranslateConfig.lang) {
         TranslateCookieHandler(null, googleTranslateConfig.domain);
     }

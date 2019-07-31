@@ -6,14 +6,6 @@ const googleTranslateConfig = {
 
 window.TranslateInit = function() {
     let code = TranslateGetCode();
-
-    let selectedLanguage = document.querySelector('[data-google-lang="' + code + '"]');
-    if (selectedLanguage !== null) {
-        let button = document.getElementById('selectedLanguage');
-        button.innerText = selectedLanguage.textContent.trim();
-    }
-
-
     if (code == googleTranslateConfig.lang) {
         TranslateCookieHandler(null, googleTranslateConfig.domain);
     }
@@ -24,14 +16,19 @@ window.TranslateInit = function() {
 
     TranslateEventHandler('click', '[data-google-lang]', function (e, el) {
         e.preventDefault();
-        TranslateCookieHandler("/" + googleTranslateConfig.lang + "/" + el.getAttribute("data-google-lang"), googleTranslateConfig.domain);
+
+        if (el.getAttribute("data-google-lang") !== 'en') {
+            TranslateCookieHandler("/" + googleTranslateConfig.lang + "/" + el.getAttribute("data-google-lang"), googleTranslateConfig.domain);
+        } else {
+            Cookies.set('googtrans', null);
+        }
+
         window.location.reload();
     });
 }
 
 function TranslateGetCode() {
     let lang = (Cookies.get('googtrans') != undefined && Cookies.get('googtrans') != "null") ? Cookies.get('googtrans') : googleTranslateConfig.lang;
-    console.log(lang);
     return lang.substr(-2);
 } 
 

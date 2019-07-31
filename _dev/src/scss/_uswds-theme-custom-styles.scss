@@ -80,6 +80,16 @@ Primary Nav Customizations
     @extend .border;
     @extend .border-base-lighter;
 
+    .usa-translate__power {
+      @include u-padding-y(1.5);
+      @include u-padding-x(2);
+
+      svg {
+        height: 27px;
+        width: 58.62px;
+      }
+    }
+
     .usa-nav__submenu-item {
       @include u-margin(0);
 
@@ -99,6 +109,12 @@ Primary Nav Customizations
     }
   }
 }
+
+/*
+----------------------------------------
+Scroll to top
+----------------------------------------
+*/
   
 #scrolltotop {
   @include u-shadow(3);
@@ -107,4 +123,51 @@ Primary Nav Customizations
   @include u-text('uppercase');
   @include u-right(2);
   @include u-bottom(3);
+}
+
+/*
+----------------------------------------
+Translations
+----------------------------------------
+*/
+
+#google_translate_element {
+  width:300px;
+  float:right;
+  text-align:right;
+  display:block
+}
+
+.goog-te-banner-frame.skiptranslate,
+.activity-root,
+.status-message,
+.started-activity-container { 
+  display: none !important;
+} 
+
+body { 
+  top: 0px !important; 
+}
+
+#goog-gt-tt, 
+.goog-tooltip skiptranslate {
+  display: none !important; 
+  top: 0px !important; 
+}
+
+.usa-nav__translate {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    .usa-svg__fill {
+      fill: color($theme-color-primary);
+    }
+  }
+  
+  svg {
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+  }
 }

@@ -29,6 +29,7 @@
 </footer>
 
 <?php wp_footer(); ?>
-
+<script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
+<a href="#primary" class="usa-button usa-button--secondary" id="scrolltotop" title="Scroll to top" hidden>Scroll to top</a>
 </body>
 </html>

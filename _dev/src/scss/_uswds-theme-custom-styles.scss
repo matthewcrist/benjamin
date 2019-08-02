@@ -49,6 +49,12 @@ i.e.
   @include u-margin-top('2');
 }
 
+/*
+----------------------------------------
+Search filter
+----------------------------------------
+*/
+
 .searchandfilter label {
   @include u-display('block');
 }
@@ -70,4 +76,64 @@ i.e.
   input {
     @extend .usa-button;
   }
+}
+
+/*
+----------------------------------------
+Primary Nav Customizations
+----------------------------------------
+*/
+
+.usa-nav__primary {
+  .usa-nav__link {
+    @extend .border-transparent;
+    @extend .border-x;
+    @extend .border-top;
+    position: relative;
+    z-index: 100;
+    white-space: nowrap;
+  }
+
+  button.usa-nav__link[aria-expanded=true] {
+    @extend .border-base-lighter;
+    @include u-color('base-dark');
+    @include u-bg('white');
+    background-image: url(../img/angle-arrow-up-primary.svg);
+  }
+
+  .usa-nav__submenu {
+    margin-top: -1px;
+    z-index: 1;
+    @include u-bg('white');
+    @include u-padding(0);
+    @extend .border;
+    @extend .border-base-lighter;
+
+    .usa-nav__submenu-item {
+      @include u-margin(0);
+
+      a {
+        @include u-color('base');
+        @include u-display('block');
+        @include u-padding-y(1.5);
+        @include u-padding-x(2);
+
+        &:hover {
+          @include u-color('white');
+          @include u-bg('primary-dark');
+          @include u-padding-y(1.5);
+          @include u-padding-x(2);
+        }
+      }
+    }
+  }
+}
+  
+#scrolltotop {
+  @include u-shadow(3);
+  @include u-z(100);
+  @include u-position('fixed');
+  @include u-text('uppercase');
+  @include u-right(2);
+  @include u-bottom(3);
 }

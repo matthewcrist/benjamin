@@ -92,8 +92,8 @@ function news_sidebar() {
     'id'            => 'news-sidebar',
     'description'   => 'The News Sidebar is shown on the left hand side of news & updates pages in this theme',
     'class'         => '',
-    'before_widget' => '<li id="%1$s" class="widget %2$s">',
-    'after_widget'  => '</li>',
+    'before_widget' => '',
+    'after_widget'  => '',
     'before_title'  => '<h2 class="widgettitle">',
     'after_title'   => '</h2>' 
   );

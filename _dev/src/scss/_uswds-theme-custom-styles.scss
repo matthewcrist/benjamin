@@ -78,6 +78,16 @@ Search filter
   }
 }
 
+[data-sf-field-input-type=checkbox] {
+  .sf-input-checkbox {
+    @extend .usa-checkbox__input;
+  }
+
+  .sf-label-checkbox {
+    @extend .usa-checkbox__label;
+  }
+}
+
 /*
 ----------------------------------------
 Primary Nav Customizations

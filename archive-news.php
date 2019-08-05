@@ -25,9 +25,7 @@ get_header();
  *
  */
 extract(benjamin_template_settings());
-
 $template = 'news-sidebar';
-
 if (!$hide_content) :
 ?>
 
@@ -47,6 +45,7 @@ if (!$hide_content) :
             endif;
             ?>
             <div class="usa-prose <?php echo esc_attr($main_width); ?>">
+                <h1>News &amp; Updates</h1>
                 <?php
                     if (have_posts()) :
                         /* Start the Loop */
@@ -58,12 +57,12 @@ if (!$hide_content) :
                         * If you want to override this in a child theme, then include a file
                         * called content-___.php (where ___ is the Post Format name) and that will be used instead.
                         */
-                            get_template_part('template-parts/feed/content', get_post_format());
+                            get_template_part('template-parts/feed/news', get_post_format());
                         endwhile;
 
                         benjamin_the_posts_navigation();
                     else :
-                        get_template_part('template-parts/feed/content', 'none');
+                        get_template_part('template-parts/feed/news', 'none');
                     endif;
                 ?>
             </div>

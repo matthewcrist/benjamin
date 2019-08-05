@@ -49,6 +49,10 @@ i.e.
   @include u-margin-top('2');
 }
 
+.bg-violet-70v {
+  @include u-bg('violet-70v');
+}
+
 /*
 ----------------------------------------
 Search filter

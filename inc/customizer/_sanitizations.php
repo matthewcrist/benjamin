@@ -117,7 +117,6 @@ function benjamin_frontpage_sortable_sanitize($val) {
 function benjamin_header_sortable_sanitize($val) {
     $valids = array(
         'navbar',
-        'hero',
         'banner',
     );
 

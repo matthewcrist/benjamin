@@ -49,6 +49,10 @@ i.e.
   @include u-margin-top('2');
 }
 
+.text-violet-70v {
+  @include u-color('violet-70v');
+}
+
 .bg-violet-70v {
   @include u-bg('violet-70v');
 }

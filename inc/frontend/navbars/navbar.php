@@ -24,13 +24,13 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
           wp_nav_menu($args);
         ?>
         <div></div>
-        <ul id="translate-navigation" class="usa-nav__primary usa-accordion notranslate">
+        <ul id="translate-navigation" class="usa-nav__primary usa-accordion">
           <li class="usa-nav__primary-item">
             <button class="usa-accordion__button usa-nav__link usa-nav__translate" aria-expanded="false" aria-controls="translations">
               <?php include(get_template_directory() . '/assets/frontend/img/globe-americas.svg'); ?>
               <span id="selectedLanguage">Translations</span>
             </button>
-            <ul class="usa-nav__submenu" id="translations" hidden="">
+            <ul class="usa-nav__submenu notranslate" id="translations" hidden="">
               <li class="usa-nav__submenu-item">
                 <a href="#"data-google-lang="en">
                   <span>English</span>

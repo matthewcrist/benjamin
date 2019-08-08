@@ -101,3 +101,13 @@ function news_sidebar() {
   register_sidebar( $args );
 
 }
+
+function custom_type_archive_display($query) {
+    if (is_post_type_archive('news')) {
+         $query->set('posts_per_page', 5);
+         $query->set('orderby', 'date' );
+         $query->set('order', 'DESC' );
+        return;
+    }     
+}
+add_action('pre_get_posts', 'custom_type_archive_display');

@@ -48,6 +48,7 @@ if (! $hide_content) :
             
                     endwhile; // End of the loop.
                 ?>
+                <?php get_template_part('template-parts/forms/news', 'none'); ?>
             </div>
             <?php
             if($sidebar_position == 'right'):

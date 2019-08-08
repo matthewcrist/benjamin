@@ -49,6 +49,53 @@ i.e.
   @include u-margin-top('2');
 }
 
+.text-violet-70v {
+  @include u-color('violet-70v');
+}
+
+.bg-violet-70v {
+  @include u-bg('violet-70v');
+}
+
+/*
+----------------------------------------
+Search filter
+----------------------------------------
+*/
+
+.searchandfilter label {
+  @include u-display('block');
+}
+
+.searchandfilter {
+  @extend .usa-form;
+}
+
+.searchandfilter ul,
+.sf_date_field {
+  @include unstyled-list;
+}
+
+.sf-input-text {
+  @extend .usa-input;
+}
+
+.sf-field-submit {
+  input {
+    @extend .usa-button;
+  }
+}
+
+[data-sf-field-input-type=checkbox] {
+  .sf-input-checkbox {
+    @extend .usa-checkbox__input;
+  }
+
+  .sf-label-checkbox {
+    @extend .usa-checkbox__label;
+  }
+}
+
 /*
 ----------------------------------------
 Primary Nav Customizations

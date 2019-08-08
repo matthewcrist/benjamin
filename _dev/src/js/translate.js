@@ -6,8 +6,10 @@ const googleTranslateConfig = {
 
 window.TranslateInit = function() {
     let code = TranslateGetCode();
+    let domain = document.domain;
+
     if (code == googleTranslateConfig.lang) {
-        TranslateCookieHandler(null, googleTranslateConfig.domain);
+        TranslateCookieHandler(null, domain);
     }
 
     new google.translate.TranslateElement({
@@ -18,7 +20,7 @@ window.TranslateInit = function() {
         e.preventDefault();
 
         if (el.getAttribute("data-google-lang") !== 'en') {
-            TranslateCookieHandler("/" + googleTranslateConfig.lang + "/" + el.getAttribute("data-google-lang"), googleTranslateConfig.domain);
+            TranslateCookieHandler("/" + googleTranslateConfig.lang + "/" + el.getAttribute("data-google-lang"), domain);
         } else {
             Cookies.set('googtrans', null);
         }
@@ -35,7 +37,7 @@ function TranslateGetCode() {
 function TranslateCookieHandler(val, domain) {
     Cookies.set('googtrans', val);
     Cookies.set("googtrans", val, {
-        domain: "." + document.domain,
+        domain: "." + domain,
     });
 
     if (domain == "undefined") return;

@@ -57,6 +57,10 @@ i.e.
   @include u-bg('violet-70v');
 }
 
+.sf-field-submit input {
+  margin-top: 0;
+}
+
 /*
 ----------------------------------------
 Search filter

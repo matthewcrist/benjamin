@@ -4,7 +4,7 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
 
 <div class="usa-overlay"></div>
 <header class="usa-header border-bottom border-primary-lighter" role="banner">
-  <div class="usa-nav-container">
+  <div class="tablet:padding-y-05 tablet:padding-x-2">
     <div class="display-flex flex-align-center">
       <div class="padding-x-2 desktop:padding-x-0 padding-y-2 flex-fill">
         <?php benjamin_navbar_brand(); ?>
@@ -12,13 +12,10 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
       <button class="usa-menu-btn">Menu</button>
       <nav role="navigation" class="usa-nav display-flex flex-align-center">
         <button class="usa-nav__close"><img src="/assets/img/close.svg" alt="close"></button>
-        <form class="usa-search usa-search--small order-last width-card-lg">
-          <div role="search">
-            <label class="usa-sr-only" for="basic-search-field-small">Search small</label>
-            <input class="usa-input" id="basic-search-field-small" type="search" name="search">
-            <button class="usa-button" type="submit"><span class="usa-sr-only">Search</span></button>
-          </div>
-        </form>
+        <div class="order-last display-flex flex-align-center">
+          <script async src="https://cse.google.com/cse.js?cx=016363712229386134106:tlizitetjji"></script>
+          <div class="gcse-searchbox-only" data-resultsUrl="/results"></div>
+        </div>
         <?php
           $args =  array(
             'theme_location' => 'primary',

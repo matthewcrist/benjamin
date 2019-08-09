@@ -157,6 +157,47 @@ Primary Nav Customizations
   }
 }
 
+.gsc-search-box {
+  margin: 0 !important;
+}
+
+.gsc-input {
+  padding: 0 !important;
+}
+
+.gsc-input-box {
+  @extend .usa-input;
+  @extend .width-auto;
+  margin: 0;
+
+  .gsib_a {
+    padding: 0;
+  }
+}
+
+button.gsc-search-button {
+  margin: 0;
+  @extend .usa-button;
+  @include u-bg('white');
+  padding: 11px 12px;
+  border: 1px solid #dcdee0;
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  &:hover {
+    border: 1px solid #dcdee0;
+    border-left: none;
+    @include u-bg('white');
+  }
+
+  svg {
+    path {
+      fill: #565c65;
+    }
+  }
+}
+
 /*
 ----------------------------------------
 Scroll to top

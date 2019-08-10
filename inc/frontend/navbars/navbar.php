@@ -12,7 +12,7 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
       <button class="usa-menu-btn">Menu</button>
       <nav role="navigation" class="usa-nav display-flex flex-align-center">
         <button class="usa-nav__close"><img src="/assets/img/close.svg" alt="close"></button>
-        <div class="order-last display-flex flex-align-center">
+        <div class="usa-search--cse desktop:order-last display-flex flex-align-center">
           <script async src="https://cse.google.com/cse.js?cx=016363712229386134106:tlizitetjji"></script>
           <div class="gcse-searchbox-only" data-resultsUrl="/results"></div>
         </div>

@@ -161,6 +161,15 @@ Primary Nav Customizations
   margin: 0 !important;
 }
 
+.gsc-control-cse {
+  padding: 0 !important;
+}
+
+.usa-search--cse > div {
+  width: 100%;
+  min-width: 208px;
+}
+
 .gsc-input {
   padding: 0 !important;
 }
